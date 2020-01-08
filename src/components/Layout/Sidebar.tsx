@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { useHistory } from 'react-router-dom';
 
+// @ts-ignore
 import Fade from 'react-reveal/Fade';
 
 import { UserContext } from 'context/user';
@@ -21,8 +22,14 @@ const Sidebar = ({ isOpen, sideBarToggle }: IProps) => {
     <>
       {isOpen && (
         <Fade>
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-          <div className="sidebar__overlay" onClick={sideBarToggle} />
+          <div
+            className="sidebar__overlay"
+            onClick={sideBarToggle}
+            onKeyDown={sideBarToggle}
+            role="button"
+            aria-label="overlay"
+            tabIndex={0}
+          />
         </Fade>
       )}
 

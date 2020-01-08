@@ -8,11 +8,6 @@
     "allowJs": true,
     "strict": true,
     "baseUrl": "./src",
-    "paths": {
-      "assets/*": ["./assets/*"],
-      "configs/*": ["./configs/*"],
-      "types/*": ["./types/*"]
-    },
     "allowSyntheticDefaultImports": true,
     "moduleResolution": "node",
     "typeRoots": ["./src/types", "./node_modules/@types"],

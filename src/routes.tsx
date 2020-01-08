@@ -9,30 +9,31 @@ const Info = React.lazy(() => import('./pages/info'));
 
 interface IRouteProps extends RouteProps {
   path: string;
+  _component: React.ElementType;
 }
 
 const routes: IRouteProps[] = [
   {
     path: '/',
     exact: true,
-    component: Main,
+    _component: Main,
   },
   {
     path: '/collaborators/:id',
     exact: true,
-    component: Collaborator,
+    _component: Collaborator,
   },
   {
     path: '/collaborators/:id/:counter',
-    component: ScoreChange,
+    _component: ScoreChange,
   },
   {
     path: '/info',
-    component: Info,
+    _component: Info,
   },
   {
     path: '*',
-    component: () => <Redirect to="/" />,
+    _component: () => <Redirect to="/" />,
   },
 ];
 

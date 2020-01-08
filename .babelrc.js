@@ -9,12 +9,6 @@ module.exports = {
         sourceMaps: process.env.NODE_ENV === 'development',
         vendorPrefixes: process.env.NODE_ENV === 'production',
         plugins: [
-          /*[
-            'styled-jsx-plugin-postcss',
-            {
-              path: 'postcss.config.js',
-            },
-          ],*/
           'styled-jsx-plugin-sass',
         ],
       },

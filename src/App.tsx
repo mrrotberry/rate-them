@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { Route, Switch } from 'react-router-dom';
 
+// @ts-ignore
 import Fade from 'react-reveal/Fade';
 
 import { UserContext } from 'context/user';
@@ -13,6 +14,18 @@ import routes from './routes';
 const App = () => {
   const { user } = React.useContext(UserContext);
 
+  const ComponentLoader = (
+    <Fade>
+      <div className="component-loader">
+        <div className="loader">
+          <div />
+          <div />
+          <div />
+        </div>
+      </div>
+    </Fade>
+  );
+
   return (
     <>
       {!user.name || !user.company || !user.isAuthorization ? (
@@ -23,24 +36,17 @@ const App = () => {
         <Fade>
           <Layout>
             <Switch>
-              {routes.map(({ path, exact, component: Component }) => (
-                <Route key={path} path={path} exact={exact}>
-                  <React.Suspense
-                    fallback={
-                      <Fade>
-                        <div className="component-loader">
-                          <div className="loader">
-                            <div />
-                            <div />
-                            <div />
-                          </div>
-                        </div>
-                      </Fade>
-                    }
-                  >
-                    <Component />
-                  </React.Suspense>
-                </Route>
+              {routes.map(({ path, exact, _component: Component }) => (
+                <Route
+                  key={path}
+                  path={path}
+                  exact={exact}
+                  render={routeProps => (
+                    <React.Suspense fallback={ComponentLoader}>
+                      <Component {...routeProps} />
+                    </React.Suspense>
+                  )}
+                />
               ))}
             </Switch>
           </Layout>
