@@ -1,0 +1,56 @@
+{
+  "root": true,
+  "env": {
+    "browser": true
+  },
+  "extends": ["airbnb", "plugin:prettier/recommended", "prettier/@typescript-eslint"],
+  "plugins": ["@typescript-eslint"],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "settings": {
+    "import/resolver": {
+      "webpack": {
+        "config": "webpack.common.js"
+      },
+      "alias": {
+        "map": [
+          ["assets", "./src/assets"],
+          ["components", "./src/components"],
+          ["configs", "./src/configs"],
+          ["context", "./src/context"],
+          ["shared", "./src/shared"],
+          ["storage", "./src/storage"],
+          ["types", "./src/types"]
+        ],
+        "extensions": [".ts", ".js", ".jsx", ".json"]
+      }
+    },
+    "react": {
+      "version": "detect"
+    }
+  },
+  "rules": {
+    "@typescript-eslint/no-unused-vars": "warn",
+    "@typescript-eslint/member-ordering": "warn",
+    "import/named": "off",
+    "import/extensions": "off",
+    "import/no-cycle": "warn",
+    "import/prefer-default-export": "off",
+    "no-console": "warn",
+    "no-restricted-globals": "off",
+    "no-empty-function": "warn",
+    "no-unused-vars": "off",
+    "no-useless-constructor": "off",
+    "react/jsx-curly-newline": "off",
+    "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-one-expression-per-line": "off",
+    "prettier/prettier": "warn",
+    "spaced-comment": "warn"
+  }
+}

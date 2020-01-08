@@ -1,0 +1,93 @@
+<!-- Build datetime: <%= htmlWebpackPlugin.options.buildDatetime %> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no" />
+
+    <base href="/">
+
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <meta name="description" content="<%= htmlWebpackPlugin.options.description %>" />
+
+    <meta name="robots" content="all" />
+</head>
+<body>
+<noscript>
+    <div id="noscript">
+        <style>
+            #noscript {
+                text-align: center;
+                font-family: sans-serif, serif;
+                font-weight: 300;
+                color: #555;
+            }
+            #noscript a {
+                color: #355980;
+                text-decoration: none;
+                transition: all 0.2s linear;
+            }
+            #noscript a:hover {
+                color: #000;
+            }
+            .js-warn {
+                background: #eee;
+                display: block;
+                width: 30%;
+                min-width: 275px;
+                margin: 50px auto 0;
+                border-radius: 10px;
+                box-shadow: 0px 10px 70px;
+                position: relative;
+            }
+            .js-warn h1 {
+                padding: 10px 10px 0 10px;
+            }
+            .js-warn p {
+                padding: 0 10px 10px 10px;
+            }
+            #js-to-main {
+                display: none;
+                position: fixed;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                font-size: 18px;
+                font-weight: 700;
+            }
+            #hide:checked ~ #js-warn-exit {
+                display: none;
+            }
+            #hide:checked ~ #js-to-main {
+                display: block;
+            }
+            #hide {
+                position: fixed;
+                left: 100%;
+            }
+            #js-warn-exit {
+                padding: 1em;
+                overflow: auto;
+            }
+            #js-warn-exit label {
+                background: #355980;
+                color: white;
+                padding: 0.5em 0.75em;
+                cursor: pointer;
+                border-radius: 3px;
+                float: right;
+            }
+        </style>
+        <input type="checkbox" id="hide" />
+        <div class="js-warn" id="js-warn-exit">
+            <h1>Javascript Is Disabled</h1>
+            <p>Javascript seems to be disabled. This will break some site features.</p>
+            <p>To enable Javascript click <a href="http://www.enable-javascript.com/" target="_blank">here</a></p>
+            <label for="hide">Close</label>
+        </div>
+        <a href="/index.html" id="js-to-main">&#8635; Refresh page</a>
+    </div>
+</noscript>
+<div id="root"></div>
+</body>
+</html>

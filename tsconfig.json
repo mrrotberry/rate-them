@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "target": "es2015",
+    "sourceMap": true,
+    "module": "commonjs",
+    "jsx": "react",
+    "lib": ["dom", "esnext"],
+    "allowJs": true,
+    "strict": true,
+    "baseUrl": "./src",
+    "paths": {
+      "assets/*": ["./assets/*"],
+      "configs/*": ["./configs/*"],
+      "types/*": ["./types/*"]
+    },
+    "allowSyntheticDefaultImports": true,
+    "moduleResolution": "node",
+    "typeRoots": ["./src/types", "./node_modules/@types"],
+    "resolveJsonModule": true,
+    "esModuleInterop": false
+  },
+  "include": ["./src/**/*"]
+}
