@@ -43,7 +43,7 @@ export const AddCollaborator = ({ isShowAddForm, setIsShowAddForm }: IProps) => 
 
           await setCollaboratorNameError('');
 
-          if (collaboratorName.length < 3) {
+          if (collaboratorName.trim().length < 3) {
             formHasError = true;
             await setCollaboratorNameError('oops, your name so short...');
           }
@@ -51,7 +51,7 @@ export const AddCollaborator = ({ isShowAddForm, setIsShowAddForm }: IProps) => 
           if (!formHasError) {
             collaboratorsDispatch({
               type: ECollaboratorsActionTypes.ADD_COLLABORATOR,
-              payload: { id: uuid(), name: collaboratorName, score: 0, history: [] },
+              payload: { id: uuid(), name: collaboratorName.trim(), score: 0, history: [] },
             });
 
             setCollaboratorName('');

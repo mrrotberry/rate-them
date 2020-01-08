@@ -51,7 +51,7 @@ const Collaborator = () => {
 
                       await setNewCollaboratorNameError('');
 
-                      if (newCollaboratorName.length < 3) {
+                      if (newCollaboratorName.trim().length < 3) {
                         formHasError = true;
                         await setNewCollaboratorNameError('oops, your name so short...');
                       }
@@ -60,7 +60,7 @@ const Collaborator = () => {
                         setEditingCollaboratorName(false);
                         collaboratorsDispatch({
                           type: ECollaboratorsActionTypes.EDIT_COLLABORATOR,
-                          payload: { ...collaborator, name: newCollaboratorName },
+                          payload: { ...collaborator, name: newCollaboratorName.trim() },
                         });
                       }
                     }}
