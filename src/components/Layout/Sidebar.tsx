@@ -20,18 +20,14 @@ const Sidebar = ({ isOpen, sideBarToggle }: IProps) => {
 
   return (
     <>
-      {isOpen && (
-        <Fade>
-          <div
-            className="sidebar__overlay"
-            onClick={sideBarToggle}
-            onKeyDown={sideBarToggle}
-            role="button"
-            aria-label="overlay"
-            tabIndex={0}
-          />
-        </Fade>
-      )}
+      <div
+        className="sidebar__overlay"
+        onClick={sideBarToggle}
+        onKeyDown={sideBarToggle}
+        role="button"
+        aria-label="overlay"
+        tabIndex={0}
+      />
 
       <aside className="sidebar">
         <div className="sidebar__user user">
@@ -100,7 +96,7 @@ const Sidebar = ({ isOpen, sideBarToggle }: IProps) => {
             position: fixed;
             top: 0;
             z-index: 1000;
-            left: ${isOpen ? 0 : '-300px'};
+            left: ${isOpen ? '0' : '-300px'};
             background-color: var(--lightBlack);
             box-shadow: 5px 0 10px ${isOpen ? 'rgba(62, 62, 62, 0.55)' : 'transparent'};
             transition: 0.4s;
@@ -112,7 +108,14 @@ const Sidebar = ({ isOpen, sideBarToggle }: IProps) => {
               left: 0;
               right: 0;
               z-index: 999;
+              opacity: ${isOpen ? '1' : '0'};
+              pointer-events: ${isOpen ? 'auto' : 'none'};
               background-color: rgba(0, 0, 0, 0.35);
+              transition: 0.4s;
+
+              &:focus {
+                outline: none;
+              }
             }
           }
 
