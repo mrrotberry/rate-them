@@ -1,7 +1,10 @@
 # Rate Them PWA
 📶 Rate your colleagues
 
-Example PWA with next stack:
+## Demo
+[Live preview](https://rate-them-app.firebaseapp.com/)
+
+## Stack
 - Typescript
 - React
 - StyledJSX
