@@ -2,9 +2,6 @@ import * as React from 'react';
 
 import { useHistory } from 'react-router-dom';
 
-// @ts-ignore
-import Fade from 'react-reveal/Fade';
-
 import { UserContext } from 'context/user';
 import { EUserActionTypes } from 'context/user/types';
 

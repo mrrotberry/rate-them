@@ -2,6 +2,9 @@ import * as React from 'react';
 
 import { Link } from 'react-router-dom';
 
+// @ts-ignore
+import Fade from 'react-reveal/Fade';
+
 import logo from 'assets/logo.png';
 
 interface IProps {
@@ -10,7 +13,7 @@ interface IProps {
 
 const Header = ({ sideBarToggle }: IProps) => {
   return (
-    <>
+    <Fade>
       <header className="header">
         <button type="button" className="header__menu-btn" onClick={sideBarToggle}>
           <i className="gg-menu" />
@@ -74,7 +77,7 @@ const Header = ({ sideBarToggle }: IProps) => {
           }
         `}
       </style>
-    </>
+    </Fade>
   );
 };
 

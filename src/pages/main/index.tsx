@@ -47,7 +47,9 @@ const Main = () => {
           ))}
         </ul>
       ) : (
-        <div className="collaborators__empty">No collaborators</div>
+        <Fade>
+          <div className="collaborators__empty">No collaborators</div>
+        </Fade>
       )}
 
       <button

@@ -33,24 +33,22 @@ const App = () => {
           <UserEdit />
         </Fade>
       ) : (
-        <Fade>
-          <Layout>
-            <Switch>
-              {routes.map(({ path, exact, _component: Component }) => (
-                <Route
-                  key={path}
-                  path={path}
-                  exact={exact}
-                  render={routeProps => (
-                    <React.Suspense fallback={ComponentLoader}>
-                      <Component {...routeProps} />
-                    </React.Suspense>
-                  )}
-                />
-              ))}
-            </Switch>
-          </Layout>
-        </Fade>
+        <Layout>
+          <Switch>
+            {routes.map(({ path, exact, _component: Component }) => (
+              <Route
+                key={path}
+                path={path}
+                exact={exact}
+                render={routeProps => (
+                  <React.Suspense fallback={ComponentLoader}>
+                    <Component {...routeProps} />
+                  </React.Suspense>
+                )}
+              />
+            ))}
+          </Switch>
+        </Layout>
       )}
       <style jsx global>
         {`
