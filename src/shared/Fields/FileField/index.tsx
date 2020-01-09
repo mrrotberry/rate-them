@@ -10,9 +10,10 @@ interface IProps {
   helpText?: string;
   imageDataUrl?: string;
   setImageDataUrl: (imgDataUrl: string) => void;
+  disabled?: boolean;
 }
 
-export const FileField = ({ name, helpText, imageDataUrl, setImageDataUrl }: IProps) => {
+export const FileField = ({ name, helpText, imageDataUrl, setImageDataUrl, disabled = false }: IProps) => {
   const [previewImageDataUrl, setPreviewImageDataUrl] = React.useState(imageDataUrl || stubUserAvatar);
 
   const [uploadError, setUploadError] = React.useState('');
@@ -51,6 +52,7 @@ export const FileField = ({ name, helpText, imageDataUrl, setImageDataUrl }: IPr
         }}
         aria-label="Upload avatar"
         accept="image/*"
+        disabled={disabled}
       />
 
       <label htmlFor={name} className="file-field__label">
@@ -82,7 +84,7 @@ export const FileField = ({ name, helpText, imageDataUrl, setImageDataUrl }: IPr
               flex-direction: column;
               padding: 0.5rem;
               border: 3px solid transparent;
-              cursor: pointer;
+              cursor: ${disabled ? 'not-allowed' : 'pointer'};
               transition: 0.4s;
             }
 
@@ -98,6 +100,8 @@ export const FileField = ({ name, helpText, imageDataUrl, setImageDataUrl }: IPr
                 object-fit: cover;
                 max-width: 100%;
                 height: auto;
+                transition: 0.4s;
+                filter: ${disabled ? 'grayscale(100%)' : 'grayscale(0)'};
               }
             }
 

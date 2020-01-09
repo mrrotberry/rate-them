@@ -54,6 +54,7 @@ export const UserEdit = () => {
         helpText="maximum image size - 1Mb"
         imageDataUrl={userAvatar}
         setImageDataUrl={setUserAvatar}
+        disabled={editingIsSuccess}
       />
 
       <TextField
