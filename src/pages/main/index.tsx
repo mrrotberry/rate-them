@@ -100,6 +100,14 @@ const Main = () => {
               font-size: 2rem;
               color: var(--white);
               transition: 0.4s;
+
+              &:hover {
+                box-shadow: -3px 3px var(--grey);
+              }
+
+              &:active {
+                box-shadow: 0 0 var(--white);
+              }
             }
 
             &__list {
@@ -116,11 +124,22 @@ const Main = () => {
               justify-content: space-between;
               align-items: center;
               margin-bottom: 1.5rem;
-              padding: 0.75rem;
+              padding: 0.75rem 1.5rem;
               border-radius: 0.3rem;
               background-image: linear-gradient(135deg, var(--white), #fff);
               text-decoration: none;
               color: var(--lightBlack);
+            }
+
+            border-radius: 0.3rem;
+            transition: 0.4s;
+
+            &:hover {
+              box-shadow: -3px 3px var(--grey);
+            }
+
+            &:active {
+              box-shadow: 0 0 var(--grey);
             }
 
             &__name {

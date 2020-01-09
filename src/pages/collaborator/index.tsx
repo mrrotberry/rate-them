@@ -85,20 +85,20 @@ const Collaborator = () => {
             <i>{collaborator.score}</i>
           </div>
           <div className="collaborator__score-buttons">
-            {collaborator.score < 999 && (
-              <Link
-                className="collaborator__score-change collaborator__score-change_increment"
-                to={`/collaborators/${collaborator.id}/increment`}
-              >
-                <i className="gg-math-plus" />
-              </Link>
-            )}
             {collaborator.score > -999 && (
               <Link
                 className="collaborator__score-change collaborator__score-change_decrement"
                 to={`/collaborators/${collaborator.id}/decrement`}
               >
                 <i className="gg-math-minus" />
+              </Link>
+            )}
+            {collaborator.score < 999 && (
+              <Link
+                className="collaborator__score-change collaborator__score-change_increment"
+                to={`/collaborators/${collaborator.id}/increment`}
+              >
+                <i className="gg-math-plus" />
               </Link>
             )}
           </div>
@@ -118,9 +118,11 @@ const Collaborator = () => {
                       {record.change}
                     </i>
                     <div className="history__item-date">{dayjs(record.date).format('DD MM YYYY / HH:mm:ss')}</div>
-                    <span className="history__item-description">
-                      Description: <i>{record.description || '-'}</i>
-                    </span>
+                    {record.description && (
+                      <span className="history__item-description">
+                        Description: <i className="history__item-description-text">{record.description}</i>
+                      </span>
+                    )}
                   </li>
                 ))}
             </ul>
@@ -279,6 +281,14 @@ const Collaborator = () => {
                 user-select: none;
                 transition: 0.4s;
 
+                &:hover {
+                  box-shadow: -3px 3px currentColor;
+                }
+
+                &:active {
+                  box-shadow: 0 0 currentColor;
+                }
+
                 .gg-math-plus,
                 .gg-math-plus::after {
                   display: block;
@@ -389,7 +399,7 @@ const Collaborator = () => {
                 align-items: center;
                 flex-wrap: wrap;
                 margin-bottom: 1.5rem;
-                padding: 0.75rem;
+                padding: 0.75rem 1.5rem;
                 border-radius: 0.3rem;
                 background-image: linear-gradient(135deg, var(--white), #fff);
                 color: var(--lightBlack);
@@ -411,11 +421,17 @@ const Collaborator = () => {
                   width: 50%;
                   text-align: right;
                   color: var(--grey);
+                  font-size: 0.8rem;
                 }
 
                 &-description {
                   width: 100%;
-                  margin-top: 0.5rem;
+                  margin: 0.5rem 0 0.25rem;
+                  color: var(--grey);
+
+                  &-text {
+                    color: var(--darkBlack);
+                  }
                 }
               }
             }

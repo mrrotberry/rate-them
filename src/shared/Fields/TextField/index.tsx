@@ -119,8 +119,13 @@ export const TextField = ({
                 box-shadow: -3px 3px var(--red);
               }
 
+              &:hover {
+                box-shadow: -3px 3px var(--grey);
+              }
+
               &:focus {
                 outline: var(--lightBlack);
+                box-shadow: 0 0 var(--white);
               }
 
               &:disabled {
@@ -145,6 +150,7 @@ export const TextField = ({
             &__help-text {
               font-size: 0.75rem;
               color: var(--grey);
+              text-align: left;
             }
           }
         `}

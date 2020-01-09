@@ -35,8 +35,12 @@ export const Button = ({ children, onClick, loading, disabled = false }: IProps)
             transition: 0.4s;
             cursor: pointer;
 
+            &:hover {
+              box-shadow: -3px 3px var(--grey);
+            }
+
             &:active {
-              transform: scale(0.9);
+              box-shadow: 0 0 var(--white);
             }
 
             &:disabled {
