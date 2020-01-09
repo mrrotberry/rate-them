@@ -11,7 +11,7 @@ export const loadUser = (): IUser => {
     return JSON.parse(<string>localStorage.getItem('user')) as IUser;
   }
 
-  const initialState = { name: '', company: '', isAuthorization: false };
+  const initialState = { name: '', avatar: '', company: '', isAuthorization: false };
 
   saveUser(initialState);
 

@@ -3,12 +3,13 @@ import * as React from 'react';
 import { EUserActionTypes } from 'context/user/types';
 import { UserContext } from 'context/user';
 
-import { Button, TextField } from 'shared';
+import { Button, TextField, FileField } from 'shared';
 
 export const UserEdit = () => {
   const { user, userDispatch } = React.useContext(UserContext);
 
   const [userName, setUserName] = React.useState(user.name);
+  const [userAvatar, setUserAvatar] = React.useState(user.avatar);
   const [userCompany, setUserCompany] = React.useState(user.company);
 
   const [userNameError, setUserNameError] = React.useState('');
@@ -30,7 +31,9 @@ export const UserEdit = () => {
         </i>
         .
       </h2>
+
       <p className="user-edit__description">To continue, you need to fill out this information:</p>
+
       <TextField
         name="user-name"
         label="Your name"
@@ -45,6 +48,14 @@ export const UserEdit = () => {
         errorText={userNameError}
         disabled={editingIsSuccess}
       />
+
+      <FileField
+        name="user-avatar"
+        helpText="maximum image size - 1Mb"
+        imageDataUrl={userAvatar}
+        setImageDataUrl={setUserAvatar}
+      />
+
       <TextField
         name="user-company"
         label="Your company name"
@@ -59,6 +70,7 @@ export const UserEdit = () => {
         errorText={userCompanyError}
         disabled={editingIsSuccess}
       />
+
       <Button
         onClick={async () => {
           let formHasError = false;
@@ -81,7 +93,12 @@ export const UserEdit = () => {
             setTimeout(() => {
               userDispatch({
                 type: EUserActionTypes.SET_USER,
-                payload: { name: userName.trim(), company: userCompany.trim(), isAuthorization: true },
+                payload: {
+                  name: userName.trim(),
+                  avatar: userAvatar,
+                  company: userCompany.trim(),
+                  isAuthorization: true,
+                },
               });
             }, 1500);
           }
@@ -90,6 +107,7 @@ export const UserEdit = () => {
       >
         Save your info
       </Button>
+
       <style jsx>
         {`
           .user-edit {

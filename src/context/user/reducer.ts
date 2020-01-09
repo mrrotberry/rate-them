@@ -13,7 +13,12 @@ export const userContextReducer = (state: IUser = initialState, action: IUserAct
 
   switch (type) {
     case EUserActionTypes.SET_USER:
-      return saveUser({ name: payload.name, company: payload.company, isAuthorization: payload.isAuthorization });
+      return saveUser({
+        name: payload.name,
+        avatar: payload.avatar,
+        company: payload.company,
+        isAuthorization: payload.isAuthorization,
+      });
 
     default:
       return state;

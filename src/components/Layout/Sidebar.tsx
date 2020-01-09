@@ -28,7 +28,9 @@ const Sidebar = ({ isOpen, sideBarToggle }: IProps) => {
 
       <aside className="sidebar">
         <div className="sidebar__user user">
-          <div className="user__avatar">{user.name[0].toUpperCase()}</div>
+          <div className="user__avatar">
+            {user.avatar ? <img src={user.avatar} alt={`${user.name} avatar`} /> : user.name[0].toUpperCase()}
+          </div>
           <div className="user__info">
             <i className="user__name">{user.name}</i>
             <span>
@@ -134,6 +136,13 @@ const Sidebar = ({ isOpen, sideBarToggle }: IProps) => {
               background-color: springgreen;
               font-size: 30px;
               color: var(--lightBlack);
+              overflow: hidden;
+
+              img {
+                max-width: 100%;
+                height: auto;
+                object-fit: cover;
+              }
             }
 
             &__info {

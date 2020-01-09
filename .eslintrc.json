@@ -41,6 +41,14 @@
     "import/extensions": "off",
     "import/no-cycle": "warn",
     "import/prefer-default-export": "off",
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        "labelComponents": ["label"],
+        "labelAttributes": ["htmlFor"],
+        "controlComponents": ["input"]
+      }
+    ],
     "no-console": "warn",
     "no-restricted-globals": "off",
     "no-empty-function": "warn",

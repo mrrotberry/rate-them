@@ -40,7 +40,7 @@ const Info = () => {
 
       <div className="info__version">
         <small>
-          <code>v. 0.1.7</code>
+          <code>v. 0.2.0</code>
         </small>
       </div>
 
