@@ -95,7 +95,7 @@ const Sidebar = ({ isOpen, sideBarToggle }: IProps) => {
             z-index: 1000;
             left: ${isOpen ? '0' : '-300px'};
             background-color: var(--lightBlack);
-            box-shadow: 5px 0 10px ${isOpen ? 'rgba(62, 62, 62, 0.55)' : 'transparent'};
+            box-shadow: 3px 3px ${isOpen ? 'var(--white)' : 'transparent'};
             transition: 0.4s;
 
             &__overlay {
@@ -139,6 +139,12 @@ const Sidebar = ({ isOpen, sideBarToggle }: IProps) => {
             &__info {
               display: flex;
               flex-direction: column;
+              color: var(--grey);
+            }
+
+            &__name,
+            &__company {
+              color: var(--white);
             }
 
             &__name {
@@ -147,7 +153,6 @@ const Sidebar = ({ isOpen, sideBarToggle }: IProps) => {
 
             &__company {
               width: 100%;
-              color: var(--grey);
             }
           }
 

@@ -28,40 +28,39 @@ const ScoreChange = () => {
   }
 
   return (
-    <>
-      {collaborator && (
-        <Fade>
-          <div className="score-change">
-            <div className="score-change__field">
-              <div className="score-change__value">
-                {counter === 'increment' ? '+' : '-'}
-                {newScore.join('')}
-              </div>
-              <button
-                type="button"
-                className="score-change__delete"
-                onClick={() => {
-                  setNewScore([...newScore].slice(0, -1));
-                }}
-              >
-                <i className="gg-backspace" />
-              </button>
+    collaborator && (
+      <Fade>
+        <div className="score-change">
+          <div className="score-change__field">
+            <div className="score-change__value">
+              {counter === 'increment' ? '+' : '-'}
+              {newScore.join('')}
             </div>
+            <button
+              type="button"
+              className="score-change__delete"
+              onClick={() => {
+                setNewScore([...newScore].slice(0, -1));
+              }}
+            >
+              <i className="gg-backspace" />
+            </button>
+          </div>
 
-            <div className="score-change__description">
-              <TextField
-                name="change-score-description"
-                placeholder="add some comment"
-                value={description}
-                onChange={event => {
-                  setDescription(event.target.value);
-                }}
-                multiline
-              />
-            </div>
+          <div className="score-change__description">
+            <TextField
+              name="change-score-description"
+              placeholder="add a comment"
+              value={description}
+              onChange={event => {
+                setDescription(event.target.value);
+              }}
+              multiline
+            />
+          </div>
 
-            <div className="score-change__keyboard">
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map(number => (
+          <div className="score-change__keyboard">
+            {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map(number => (
                 <button
                   key={number}
                   type="button"
