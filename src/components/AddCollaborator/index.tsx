@@ -27,12 +27,12 @@ export const AddCollaborator = ({ isShowAddForm, setIsShowAddForm }: IProps) => 
       <h3>{user.name}, please set collaborator name</h3>
       <TextField
         name="add-collaborator"
-        placeholder="write here collaborator name"
+        placeholder="write collaborator name here"
         value={collaboratorName}
         onChange={event => {
           setCollaboratorName(event.target.value);
         }}
-        helpText="minimal length - 3 symbols, maximum - 20"
+        helpText="minimum length – 3 symbols, maximum – 20"
         maxLength={20}
         errorText={collaboratorNameError}
         align="center"
@@ -45,7 +45,7 @@ export const AddCollaborator = ({ isShowAddForm, setIsShowAddForm }: IProps) => 
 
           if (collaboratorName.length < 3) {
             formHasError = true;
-            await setCollaboratorNameError('oops, your name so short...');
+            await setCollaboratorNameError('Oops, your name is so short...');
           }
 
           if (!formHasError) {

@@ -30,7 +30,7 @@ export const UserEdit = () => {
         </i>
         .
       </h2>
-      <p className="user-edit__description">To continue, you need to fill out this information:</p>
+      <p className="user-edit__description">To continue, you need to fill in this information:</p>
       <TextField
         name="user-name"
         label="Your name"
@@ -40,7 +40,7 @@ export const UserEdit = () => {
           setUserName(event.target.value);
         }}
         align="center"
-        helpText="minimal length - 3 symbols, maximum - 30"
+        helpText="minimum length – 3 symbols, maximum – 30"
         maxLength={30}
         errorText={userNameError}
         disabled={editingIsSuccess}
@@ -54,7 +54,7 @@ export const UserEdit = () => {
           setUserCompany(event.target.value);
         }}
         align="center"
-        helpText="minimal length - 3 symbols, maximum - 30"
+        helpText="minimum length – 3 symbols, maximum – 30"
         maxLength={30}
         errorText={userCompanyError}
         disabled={editingIsSuccess}
@@ -67,12 +67,12 @@ export const UserEdit = () => {
 
           if (userName.length < 3) {
             formHasError = true;
-            await setUserNameError('oops, your name so short...');
+            await setUserNameError('Oops, your name is so short...');
           }
 
           if (userCompany.length < 3) {
             formHasError = true;
-            await setUserCompanyError('hmm, your company name so sort... ');
+            await setUserCompanyError('Hmm, your company name is so sort... ');
           }
 
           if (!formHasError) {

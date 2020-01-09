@@ -53,7 +53,7 @@ const Collaborator = () => {
 
                       if (newCollaboratorName.length < 3) {
                         formHasError = true;
-                        await setNewCollaboratorNameError('oops, your name so short...');
+                        await setNewCollaboratorNameError('Oops, your name is so short...');
                       }
 
                       if (!formHasError) {
@@ -127,7 +127,7 @@ const Collaborator = () => {
                 ))}
             </ul>
           ) : (
-            <div className="history_empty">No history</div>
+            <div className="history_empty">No history yet</div>
           )}
         </Fade>
 

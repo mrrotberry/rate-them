@@ -49,7 +49,7 @@ const ScoreChange = () => {
           <div className="score-change__description">
             <TextField
               name="change-score-description"
-              placeholder="add some comment"
+              placeholder="add a comment"
               value={description}
               onChange={event => {
                 setDescription(event.target.value);

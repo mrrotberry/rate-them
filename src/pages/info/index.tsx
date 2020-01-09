@@ -5,18 +5,20 @@ import githubLogo from 'assets/github-logo.svg';
 const Info = () => {
   return (
     <div className="info">
-      <h1 className="info__title">Rate them App</h1>
+      <h1 className="info__title">Rate Them App</h1>
 
       <p>
-        Did Colleague treat you like a jerk? Add it to the app and give it a negative rating so that next time he asks
-        you not to forget what a jerk he is.
+        Did your Colleague treat you like a jerk? Add them to the app and give them a negative rating so that next time
+        they ask you not to forget what a jerk they are.
       </p>
 
-      <p>It works the other way around, too. Did Colleague help you? Don`t get your hopes up, put him in the app.</p>
+      <p>
+        It works the other way around, too. Did the Colleague help you? Don`t get your hopes up, put him in the app.
+      </p>
 
-      <p>For you, this app will be like Black Notebook, where you can see everyone`s actions.</p>
+      <p>For you, this app will be like the Black Notebook, where you can see everyone`s actions.</p>
 
-      <p>P.S. This app was developed for fun and with love ❤.</p>
+      <p>P.S. This app has been developed for fun and with love ❤.</p>
 
       <div className="view">
         <div className="plane main">
@@ -40,7 +42,7 @@ const Info = () => {
 
       <div className="info__version">
         <small>
-          <code>v. 0.1.0</code>
+          <code>v. 0.1.1</code>
         </small>
       </div>
 
@@ -48,9 +50,10 @@ const Info = () => {
         {`
           .info {
             padding: 1rem;
+            text-align: center;
 
             &__title {
-              text-align: center;
+              margin-bottom: 2rem;
             }
 
             &__developer,
