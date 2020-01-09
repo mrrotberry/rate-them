@@ -6,7 +6,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const productionMode = process.env.NODE_ENV === 'production';
 
 const config = {
-  entry: [/*'core-js/stable',*//*'@babel/polyfill',*/ path.resolve(__dirname, 'src/index.tsx')],
+  entry: [path.resolve(__dirname, 'src/index.tsx')],
   output: {
     filename: 'js/bundle.[hash:16].min.js',
     path: path.resolve(__dirname, 'dist/'),

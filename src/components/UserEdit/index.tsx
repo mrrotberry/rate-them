@@ -65,12 +65,12 @@ export const UserEdit = () => {
           await setUserNameError('');
           await setUserCompanyError('');
 
-          if (userName.length < 3) {
+          if (userName.trim().length < 3) {
             formHasError = true;
             await setUserNameError('Oops, your name is so short...');
           }
 
-          if (userCompany.length < 3) {
+          if (userCompany.trim().length < 3) {
             formHasError = true;
             await setUserCompanyError('Hmm, your company name is so sort... ');
           }
@@ -81,7 +81,7 @@ export const UserEdit = () => {
             setTimeout(() => {
               userDispatch({
                 type: EUserActionTypes.SET_USER,
-                payload: { name: userName, company: userCompany, isAuthorization: true },
+                payload: { name: userName.trim(), company: userCompany.trim(), isAuthorization: true },
               });
             }, 1500);
           }

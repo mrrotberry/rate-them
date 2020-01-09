@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { Redirect, useHistory, useParams } from 'react-router-dom';
 
+// @ts-ignore
 import Fade from 'react-reveal/Fade';
 
 import { CollaboratorsContext } from 'context/collaborators';
@@ -60,164 +61,165 @@ const ScoreChange = () => {
 
           <div className="score-change__keyboard">
             {[1, 2, 3, 4, 5, 6, 7, 8, 9, 0].map(number => (
-              <button
-                key={number}
-                type="button"
-                className="score-change__key"
+                <button
+                  key={number}
+                  type="button"
+                  className="score-change__key"
+                  onClick={() => {
+                    setNewScore([...newScore, number]);
+                  }}
+                  disabled={(number === 0 && !newScore.length) || newScore.length >= 3}
+                >
+                  {number}
+                </button>
+              ))}
+            </div>
+
+            <div className="score-change__actions">
+              <Button
                 onClick={() => {
-                  setNewScore([...newScore, number]);
+                  history.push(`/collaborators/${collaborator.id}`);
                 }}
-                disabled={(number === 0 && !newScore.length) || newScore.length >= 3}
               >
-                {number}
-              </button>
-            ))}
-          </div>
+                Cancel
+              </Button>
 
-          <div className="score-change__actions">
-            <Button
-              onClick={() => {
-                history.push(`/collaborators/${collaborator.id}`);
-              }}
-            >
-              Cancel
-            </Button>
+              <Button
+                onClick={() => {
+                  collaboratorsDispatch({
+                    type: ECollaboratorsActionTypes.EDIT_COLLABORATOR,
+                    payload: {
+                      ...collaborator,
+                      score:
+                        counter === 'increment'
+                          ? collaborator.score + Number(newScore.join(''))
+                          : collaborator.score - Number(newScore.join('')),
+                      history: [
+                        ...collaborator.history,
+                        {
+                          date: Date.now(),
+                          description,
+                          change: `${counter === 'increment' ? '+' : '-'}${Number(newScore.join(''))}`,
+                        },
+                      ],
+                    },
+                  });
 
-            <Button
-              onClick={() => {
-                collaboratorsDispatch({
-                  type: ECollaboratorsActionTypes.EDIT_COLLABORATOR,
-                  payload: {
-                    ...collaborator,
-                    score:
-                      counter === 'increment'
-                        ? collaborator.score + Number(newScore.join(''))
-                        : collaborator.score - Number(newScore.join('')),
-                    history: [
-                      ...collaborator.history,
-                      {
-                        date: Date.now(),
-                        description,
-                        change: `${counter === 'increment' ? '+' : '-'}${Number(newScore.join(''))}`,
-                      },
-                    ],
-                  },
-                });
+                  history.push(`/collaborators/${collaborator.id}`);
+                }}
+                disabled={!newScore.length}
+              >
+                Save
+              </Button>
+            </div>
 
-                history.push(`/collaborators/${collaborator.id}`);
-              }}
-              disabled={!newScore.length}
-            >
-              Save
-            </Button>
-          </div>
+            <style jsx>
+              {`
+                .score-change {
+                  &__field {
+                    height: 78px;
+                    display: flex;
+                    justify-content: flex-end;
+                    margin: 1rem 1rem 2rem;
+                    padding: 0.75rem;
+                    border: 3px solid var(--white);
+                    border-radius: 3px;
+                    box-shadow: -3px 3px var(--white);
+                  }
 
-          <style jsx>
-            {`
-              .score-change {
-                &__field {
-                  height: 78px;
-                  display: flex;
-                  justify-content: flex-end;
-                  margin: 1rem 1rem 2rem;
-                  padding: 0.75rem;
-                  border: 3px solid var(--white);
-                  border-radius: 3px;
-                  box-shadow: -3px 3px var(--white);
-                }
+                  &__value {
+                    font-size: 2rem;
+                    font-style: italic;
+                  }
 
-                &__value {
-                  font-size: 2rem;
-                  font-style: italic;
-                }
+                  &__delete {
+                    width: 46px;
+                    margin-left: 1rem;
+                    border: none;
+                    background: none;
+                    color: var(--white);
+                  }
 
-                &__delete {
-                  width: 46px;
-                  margin-left: 1rem;
-                  border: none;
-                  background: none;
-                  color: var(--white);
-                }
+                  &__description {
+                    padding: 0 1rem;
+                  }
 
-                &__description {
-                  padding: 0 1rem;
-                }
+                  &__keyboard {
+                    display: flex;
+                    justify-content: center;
+                    flex-wrap: wrap;
+                    margin-bottom: 2rem;
+                  }
 
-                &__keyboard {
-                  display: flex;
-                  justify-content: center;
-                  flex-wrap: wrap;
-                  margin-bottom: 2rem;
-                }
+                  &__key {
+                    width: calc(100% / 3);
+                    height: 80px;
+                    border: none;
+                    padding: 0;
+                    background: none;
+                    font-size: 1.8rem;
+                    color: var(--white);
+                    transition: 0.4s;
+                    user-select: none;
 
-                &__key {
-                  width: calc(100% / 3);
-                  height: 80px;
-                  border: none;
-                  padding: 0;
-                  background: none;
-                  font-size: 1.8rem;
-                  color: var(--white);
-                  transition: 0.4s;
-                  user-select: none;
+                    &:disabled {
+                      color: var(--grey);
+                    }
+                  }
 
-                  &:disabled {
-                    color: var(--grey);
+                  &__actions {
+                    display: flex;
+                    justify-content: space-around;
+                  }
+
+                  .gg-backspace {
+                    box-sizing: border-box;
+                    position: relative;
+                    display: block;
+                    width: 14px;
+                    height: 14px;
+                    margin: auto;
+                    transform: scale(1.5);
+                    border: 2px solid;
+                    border-left: 0;
+                    border-top-right-radius: 2px;
+                    border-bottom-right-radius: 2px;
+                  }
+                  .gg-backspace::after,
+                  .gg-backspace::before {
+                    content: '';
+                    display: block;
+                    box-sizing: border-box;
+                    position: absolute;
+                  }
+                  .gg-backspace::before {
+                    background: linear-gradient(currentColor 18px, transparent 0) no-repeat center center/10px 2px;
+                    border-right: 3px solid transparent;
+                    box-shadow: inset 0 0 0 2px;
+                    right: 2px;
+                    bottom: 1px;
+                    width: 8px;
+                    height: 8px;
+                    border-left: 3px solid transparent;
+                    transform: rotate(45deg);
+                  }
+                  .gg-backspace::after {
+                    width: 10px;
+                    height: 10px;
+                    border-top: 2px solid;
+                    border-left: 2px solid;
+                    border-top-left-radius: 1px;
+                    transform: rotate(-45deg);
+                    top: 0;
+                    left: -5px;
                   }
                 }
-
-                &__actions {
-                  display: flex;
-                  justify-content: space-around;
-                }
-
-                .gg-backspace {
-                  box-sizing: border-box;
-                  position: relative;
-                  display: block;
-                  width: 14px;
-                  height: 14px;
-                  margin: auto;
-                  transform: scale(1.5);
-                  border: 2px solid;
-                  border-left: 0;
-                  border-top-right-radius: 2px;
-                  border-bottom-right-radius: 2px;
-                }
-                .gg-backspace::after,
-                .gg-backspace::before {
-                  content: '';
-                  display: block;
-                  box-sizing: border-box;
-                  position: absolute;
-                }
-                .gg-backspace::before {
-                  background: linear-gradient(currentColor 18px, transparent 0) no-repeat center center/10px 2px;
-                  border-right: 3px solid transparent;
-                  box-shadow: inset 0 0 0 2px;
-                  right: 2px;
-                  bottom: 1px;
-                  width: 8px;
-                  height: 8px;
-                  border-left: 3px solid transparent;
-                  transform: rotate(45deg);
-                }
-                .gg-backspace::after {
-                  width: 10px;
-                  height: 10px;
-                  border-top: 2px solid;
-                  border-left: 2px solid;
-                  border-top-left-radius: 1px;
-                  transform: rotate(-45deg);
-                  top: 0;
-                  left: -5px;
-                }
-              }
-            `}
-          </style>
-        </div>
-      </Fade>
-    )
+              `}
+            </style>
+          </div>
+        </Fade>
+      )}
+    </>
   );
 };
 

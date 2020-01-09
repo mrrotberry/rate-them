@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import { Link } from 'react-router-dom';
 
+// @ts-ignore
 import Fade from 'react-reveal/Fade';
 
 import { CollaboratorsContext } from 'context/collaborators';
@@ -46,7 +47,9 @@ const Main = () => {
           ))}
         </ul>
       ) : (
-        <div className="collaborators__empty">No collaborators</div>
+        <Fade>
+          <div className="collaborators__empty">No collaborators</div>
+        </Fade>
       )}
 
       <button

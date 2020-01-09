@@ -1,6 +1,8 @@
 import * as React from 'react';
 
+// @ts-ignore
 import HeadShake from 'react-reveal/HeadShake';
+// @ts-ignore
 import Fade from 'react-reveal/Fade';
 
 interface IProps {

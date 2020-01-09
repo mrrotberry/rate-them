@@ -4,6 +4,7 @@ import { Link, useHistory, useParams } from 'react-router-dom';
 
 import dayjs from 'dayjs';
 
+// @ts-ignore
 import Fade from 'react-reveal/Fade';
 
 import { CollaboratorsContext } from 'context/collaborators';
@@ -131,7 +132,7 @@ const Collaborator = () => {
           )}
         </Fade>
 
-        <style jsx>
+          <style jsx>
           {`
             .collaborator {
               padding: 0 1rem;
@@ -437,30 +438,31 @@ const Collaborator = () => {
             }
           `}
         </style>
-        {!editingCollaboratorName && (
-          <Fade>
-            <button
-              type="button"
-              className="collaborator__delete"
-              onClick={() => {
-                // eslint-disable-next-line no-alert
-                const deleteIsConfirm = confirm('Are you sure?');
+          {!editingCollaboratorName && (
+            <Fade>
+              <button
+                type="button"
+                className="collaborator__delete"
+                onClick={() => {
+                  // eslint-disable-next-line no-alert
+                  const deleteIsConfirm = confirm('Are you sure?');
 
-                if (deleteIsConfirm) {
-                  collaboratorsDispatch({
-                    type: ECollaboratorsActionTypes.DELETE_COLLABORATOR,
-                    payload: collaborator,
-                  });
-                  history.push('/');
-                }
-              }}
-            >
-              <i className="gg-trash" />
-            </button>
-          </Fade>
-        )}
-      </div>
-    )
+                  if (deleteIsConfirm) {
+                    collaboratorsDispatch({
+                      type: ECollaboratorsActionTypes.DELETE_COLLABORATOR,
+                      payload: collaborator,
+                    });
+                    history.push('/');
+                  }
+                }}
+              >
+                <i className="gg-trash" />
+              </button>
+            </Fade>
+          )}
+        </div>
+      )}
+    </>
   );
 };
 

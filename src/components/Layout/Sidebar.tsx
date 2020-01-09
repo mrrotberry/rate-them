@@ -2,8 +2,6 @@ import * as React from 'react';
 
 import { useHistory } from 'react-router-dom';
 
-import Fade from 'react-reveal/Fade';
-
 import { UserContext } from 'context/user';
 import { EUserActionTypes } from 'context/user/types';
 
@@ -19,12 +17,14 @@ const Sidebar = ({ isOpen, sideBarToggle }: IProps) => {
 
   return (
     <>
-      {isOpen && (
-        <Fade>
-          {/* eslint-disable-next-line jsx-a11y/click-events-have-key-events,jsx-a11y/no-static-element-interactions */}
-          <div className="sidebar__overlay" onClick={sideBarToggle} />
-        </Fade>
-      )}
+      <div
+        className="sidebar__overlay"
+        onClick={sideBarToggle}
+        onKeyDown={sideBarToggle}
+        role="button"
+        aria-label="overlay"
+        tabIndex={0}
+      />
 
       <aside className="sidebar">
         <div className="sidebar__user user">
@@ -93,7 +93,7 @@ const Sidebar = ({ isOpen, sideBarToggle }: IProps) => {
             position: fixed;
             top: 0;
             z-index: 1000;
-            left: ${isOpen ? 0 : '-300px'};
+            left: ${isOpen ? '0' : '-300px'};
             background-color: var(--lightBlack);
             box-shadow: 3px 3px ${isOpen ? 'var(--white)' : 'transparent'};
             transition: 0.4s;
@@ -105,7 +105,14 @@ const Sidebar = ({ isOpen, sideBarToggle }: IProps) => {
               left: 0;
               right: 0;
               z-index: 999;
+              opacity: ${isOpen ? '1' : '0'};
+              pointer-events: ${isOpen ? 'auto' : 'none'};
               background-color: rgba(0, 0, 0, 0.35);
+              transition: 0.4s;
+
+              &:focus {
+                outline: none;
+              }
             }
           }
 
