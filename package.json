@@ -50,7 +50,7 @@
     "styled-jsx": "3.2.4",
     "styled-jsx-plugin-postcss": "2.0.1",
     "styled-jsx-plugin-sass": "1.0.0",
-    "typescript": "3.7.2",
+    "typescript": "3.8.3",
     "uglifyjs-webpack-plugin": "2.2.0",
     "url-loader": "2.3.0",
     "uuid": "3.3.3",
