@@ -64,7 +64,7 @@
     "@typescript-eslint/eslint-plugin": "2.14.0",
     "@typescript-eslint/parser": "2.8.0",
     "error-overlay-webpack-plugin": "0.4.1",
-    "eslint": "6.1.0",
+    "eslint": "6.8.0",
     "eslint-config-airbnb": "18.0.1",
     "eslint-config-prettier": "6.4.0",
     "eslint-import-resolver-alias": "1.1.2",
